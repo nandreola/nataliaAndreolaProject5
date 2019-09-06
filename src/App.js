@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import firebase from './firebase';
+import Form from './Components/Form';
 import './Partials/App.scss';
 
 class App extends Component {
@@ -18,7 +19,6 @@ class App extends Component {
 
     // Grab value of firebase
     dbRef.on('value', (data) => {
-      console.log(data.val());
       // store product to Firebase
       const productData = data.val();
       
@@ -40,20 +40,25 @@ class App extends Component {
     this.setState({userInput: event.target.value})
   }
 
+  // Event to add input to the list once user press enter
+  handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      // create reference to database
+      const dbRef = firebase.database().ref();
+      // Grab value userInput has and push to the database
+      dbRef.push(this.state.userInput);
+      // reset to an empty string
+      this.setState({userInput: ''})
+    }
+  }
+
   render () {
     return (
       <div className="App">
         <h1>Project5 Name</h1>
-        <form action="submit">
-          <label htmlFor="newProduct" className="visuallyHidden">Add an item to your shopping list</label>
-          <input 
-            type="text" 
-            id="newProduct" 
-            placeholder="Add an item to your list" 
-            onChange={this.handleChange} 
-            value={this.state.userInput}
-          />
-        </form>
+        <Form value={this.state.userInput} change={this.handleChange} keyDown={this.handleKeyDown}/>
+        
         <ul>
           {this.state.products.map((product) => {
             return <li>{product}</li>
