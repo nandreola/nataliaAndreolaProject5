@@ -1,0 +1,27 @@
+.App {
+    // background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5)), url(../assets/bgImage2.jpg);
+    background-image: url(../assets/bgImage2.jpg);
+    background-size: cover;
+    height: 100vh;
+}
+
+.listContainer {
+    background-color: white;
+    height: 70%;
+    width: 50%;
+    margin: 0 auto;
+    padding: 20px;
+
+    li {
+        text-align: left;
+        padding-bottom: 10px;
+    }
+}
+
+h1 {
+    margin: 0;
+}
+
+.checkBox {
+    margin-right: 10px;
+}
