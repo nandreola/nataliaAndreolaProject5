@@ -7,10 +7,11 @@ const Form = ({value, change, keyDown}) => {
             <input
                 type="text"
                 id="newProduct"
-                placeholder="Add an item to your list"
+                placeholder="Add Item"
                 value={value}
                 onChange={change}
                 onKeyDown={keyDown}
+                className="addText"
             />
         </form>
     );
