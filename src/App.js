@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import firebase from './firebase';
 import Form from './Components/Form';
+import Empty from './Components/EmptyList';
+import ProductsList from './Components/ProductsList';
 import './Partials/App.scss';
 import cart from './assets/shoppingCart.jpg';
 
@@ -95,41 +97,16 @@ class App extends Component {
     return (
       <div className="App">
         <div className="wrapper">
-          <h1>GroceryFy</h1>
-          
+          <h1>GroceryFy</h1>        
           <div className="listContainer">
             <Form value={this.state.userInput} change={this.handleChange} keyDown={this.handleKeyDown} />
-
             <div className="listBox">
-
-              <div className={this.state.products.length === 0 ? 'shown' : 'hidden'}>
-              {/*Credit https://stackoverflow.com/a/51264578*/} 
-                <p>Your shopping list<span>is empty</span></p>
-                <div>
-                  <img src={cart} alt="Cat with a shopping cart"/>
-                </div>
-              </div>
-
-              <ul>
-                <li className={this.state.products.length === 0 ? 'hidden' : 'shown'}>
-                  <button className="clear" onClick={() => this.removeProduct()}>Clear list</button>
-                </li>
-                {this.state.products.map((product) => {
-                  return (
-                    <li key={product.uniqueKey}>
-                    <input type="checkbox" defaultChecked={product.isChecked} name="product" className="checkBox" onChange={() => this.toggleCheckbox(product.uniqueKey)} />
-                    <label htmlFor="product">{product.name}</label>
-                    </li>
-                    );
-                  })}
-              </ul>
-            </div>
-            
-          </div>
-
-        </div> 
-               
-      </div> 
+              <Empty emptyList={this.state.products.length === 0 ? 'shown' : 'hidden'} srcCart={cart}/>
+              <ProductsList showHideClearBtn={this.state.products.length === 0 ? 'hidden' : 'shown'} clickClear={() => this.removeProduct()} products={this.state.products} changeToggle={this.toggleCheckbox.bind(this)}/>
+            </div> {/* .listBox */}
+          </div> {/* .listContainer */}
+        </div> {/* .wrapper */}              
+      </div>
     );
   }
 }
