@@ -5,6 +5,7 @@ import Empty from './Components/EmptyList';
 import ProductsList from './Components/ProductsList';
 import './Partials/App.scss';
 import cart from './assets/shoppingCart.jpg';
+import Suggestions from './Components/Suggestions';
 
 class App extends Component {
   constructor() {
@@ -62,6 +63,17 @@ class App extends Component {
     }
   }
 
+  // Event for product selected from suggested items
+  selectedProduct = (product) => {
+      // create reference to database
+      const dbRef = firebase.database().ref();
+      // Grab value userInput has and push to the database
+      dbRef.push({
+        isChecked: false,
+        name: product
+      });    
+  }
+
   toggleCheckbox(uniqueKey) {
     // credit https://stackoverflow.com/a/46518653
     this.setState({
@@ -77,6 +89,7 @@ class App extends Component {
     });
   }  
 
+  // Event to remove product from the shopping list
   removeProduct() {
     const dbRef = firebase.database().ref();
     const notCheckedProducts = this.state.products.filter(product => {
@@ -100,12 +113,20 @@ class App extends Component {
           <h1>GroceryFy</h1>        
           <div className="listContainer">
             <Form value={this.state.userInput} change={this.handleChange} keyDown={this.handleKeyDown} />
-            <div className="listBox">
-              <Empty emptyList={this.state.products.length === 0 ? 'shown' : 'hidden'} srcCart={cart}/>
-              <ProductsList showHideClearBtn={this.state.products.length === 0 ? 'hidden' : 'shown'} clickClear={() => this.removeProduct()} products={this.state.products} changeToggle={this.toggleCheckbox.bind(this)}/>
-            </div> {/* .listBox */}
+            <div className="mainContainer">
+              <div className="listBox">
+                <Empty emptyList={this.state.products.length === 0 ? 'shown' : 'hidden'} srcCart={cart} />
+                <ProductsList showHideClearBtn={this.state.products.length === 0 ? 'hidden' : 'shown'} clickClear={() => this.removeProduct()} products={this.state.products} changeToggle={this.toggleCheckbox.bind(this)} />
+              </div> {/* .listBox */}
+              <div className="suggestionsContainer">
+                <Suggestions
+                  selectSuggestion={this.selectedProduct.bind(this)}
+                  products={this.state.products.map(product => product.name)} />
+              </div> {/* .suggestionsContainer */}
+            </div> {/* .mainContainer */}
           </div> {/* .listContainer */}
-        </div> {/* .wrapper */}              
+        </div> {/* .wrapper */}    
+        <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>          
       </div>
     );
   }
