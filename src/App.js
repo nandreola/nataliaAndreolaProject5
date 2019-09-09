@@ -6,6 +6,7 @@ import ProductsList from './Components/ProductsList';
 import './Partials/App.scss';
 import cart from './assets/shoppingCart.jpg';
 import Suggestions from './Components/Suggestions';
+import Footer from './Components/Footer';
 
 class App extends Component {
   constructor() {
@@ -128,8 +129,7 @@ class App extends Component {
             </div> {/* .listContainer */}
           </div> {/* .wrapper */} 
         </div> {/* .overlay */}
-           
-        <div className="iconsCredit">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>          
+        <Footer />        
       </div>
     );
   }
