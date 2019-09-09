@@ -21,7 +21,7 @@ span {
 
 // Main page styles
 .App {
-    // background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5)), url(../assets/bgImage2.jpg);
+    // background: rgba(255, 255, 255, 0.5), url(../assets/mainBg1.jpg);
     background-image: url(../assets/mainBg1.jpg);
     background-size: 50%;
     min-height: 100vh;
@@ -50,9 +50,40 @@ h1 {
 
 .addText,
 .clear {
+    padding: 5px 10px;
+}
+
+.addText,
+.clear,
+.suggestionsUl,
+.suggestionsUl li {
     border-radius: 5px;
     background-color: $light-color;
-    padding: 5px 10px;
+}
+
+.suggestionsUl,
+.suggestionsUl li {
+    border: 2px solid $primary-color;
+}
+
+.mainContainer {
+    display: flex;
+    justify-content: space-between;
+
+    .suggestionsContainer {
+        width: 40%;
+
+        .suggestionsUl {
+            display: flex;
+            flex-wrap: wrap;
+            padding-left: 0;
+        }
+
+        li {
+            margin: 10px;
+            width: calc((100% / 3) - 20px);
+        }
+    }
 }
 
 // List box styles
@@ -60,13 +91,13 @@ h1 {
     background-color: $primary-color;
     min-height: 50vh;
     width: 50%;
-    margin: 20px auto;
+    margin: 20px 0;
     padding: 20px;
     border-radius: 5px;
     position: relative;
     box-shadow: 0 0 8px 0 black;
 
-    ul {
+    .prodUl {
         padding-left: 0;
     }
 

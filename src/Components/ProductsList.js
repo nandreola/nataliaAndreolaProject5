@@ -2,7 +2,7 @@ import React from 'react';
 
 const ProductsList = ({ showHideClearBtn, clickClear, products, changeToggle }) => {
     return (
-        <ul>
+        <ul className="prodUl">
             <li className={showHideClearBtn}>
                 <button className="clear" onClick={clickClear}>Clear list</button>
             </li>
