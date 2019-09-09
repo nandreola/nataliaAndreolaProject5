@@ -19,17 +19,13 @@ span {
     display: block;
 }
 
-button,
-input[type=text] {
-    border: none;
-}
-
 // Main page styles
 .App {
     // background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5)), url(../assets/bgImage2.jpg);
     background-image: url(../assets/mainBg1.jpg);
     background-size: 50%;
     min-height: 100vh;
+    text-align: center;
 }
 
 h1 {
@@ -41,34 +37,34 @@ h1 {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    // min-height: 90vh;
     border: 1px solid blue;
 
     .addText {
-        border: 1px solid transparent;
+        border: 2px solid $primary-color;
 
         &:focus {
-            border: 2px solid $secondary-color;
+            // border: 2px solid $secondary-color;
         }
     }
 }
 
 .addText,
 .clear {
-    border-radius: 15px;
+    border-radius: 5px;
+    background-color: $light-color;
     padding: 5px 10px;
-    background-color: $primary-color;
 }
 
 // List box styles
 .listBox {
-    background-color: white;
+    background-color: $primary-color;
     min-height: 50vh;
     width: 50%;
     margin: 20px auto;
     padding: 20px;
-    border-radius: 15px;
+    border-radius: 5px;
     position: relative;
+    box-shadow: 0 0 8px 0 black;
 
     ul {
         padding-left: 0;
@@ -81,9 +77,16 @@ h1 {
 
     .checkBox {
         margin-right: 1rem;
+
+        &:checked + label {
+            text-decoration: line-through;
+            font-style: italic;
+        }
     }
 
     .clear {
+        border: 2px solid transparent;
+        color: $primary-color;
         position: absolute;
         right: 0;
         margin-right: 10px;
@@ -91,8 +94,9 @@ h1 {
         
         &:hover,
         &:focus {
-            background-color: $secondary-color;
-            color: white;
+            border: 2px solid $light-color;
+            background-color: $primary-color;
+            color: $light-color;
         }
     }
 }

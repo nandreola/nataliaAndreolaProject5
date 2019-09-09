@@ -5,10 +5,12 @@ html {
 body {
     font-size: 2rem;
     font-family: 'Raleway', sans-serif;
+    color: $light-color;
 }
 
 h1 {
-    font-family: 'Oswald', sans-serif;
+    font-family: 'Lobster', cursive;
     font-size: 5rem;
-    box-shadow: 5px;
+    color: $primary-color;
+    text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;   
 }
