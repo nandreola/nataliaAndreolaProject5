@@ -109,24 +109,27 @@ class App extends Component {
   render () {
     return (
       <div className="App">
-        <div className="wrapper">
-          <h1>GroceryFy</h1>        
-          <div className="listContainer">
-            <Form value={this.state.userInput} change={this.handleChange} keyDown={this.handleKeyDown} />
-            <div className="mainContainer">
-              <div className="listBox">
-                <Empty emptyList={this.state.products.length === 0 ? 'shown' : 'hidden'} srcCart={cart} />
-                <ProductsList showHideClearBtn={this.state.products.length === 0 ? 'hidden' : 'shown'} clickClear={() => this.removeProduct()} products={this.state.products} changeToggle={this.toggleCheckbox.bind(this)} />
-              </div> {/* .listBox */}
-              <div className="suggestionsContainer">
-                <Suggestions
-                  selectSuggestion={this.selectedProduct.bind(this)}
-                  products={this.state.products.map(product => product.name)} />
-              </div> {/* .suggestionsContainer */}
-            </div> {/* .mainContainer */}
-          </div> {/* .listContainer */}
-        </div> {/* .wrapper */}    
-        <div>Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>          
+        <div className="overlay">
+          <div className="wrapper">
+            <h1>GroceryFy</h1>
+            <div className="listContainer">
+              <Form value={this.state.userInput} change={this.handleChange} keyDown={this.handleKeyDown} />
+              <div className="mainContainer">
+                <div className="listBox">
+                  <Empty emptyList={this.state.products.length === 0 ? 'shown' : 'hidden'} srcCart={cart} />
+                  <ProductsList showHideClearBtn={this.state.products.length === 0 ? 'hidden' : 'shown'} clickClear={() => this.removeProduct()} products={this.state.products} changeToggle={this.toggleCheckbox.bind(this)} />
+                </div> {/* .listBox */}
+                <div className="suggestionsContainer">
+                  <Suggestions
+                    selectSuggestion={this.selectedProduct.bind(this)}
+                    products={this.state.products.map(product => product.name)} />
+                </div> {/* .suggestionsContainer */}
+              </div> {/* .mainContainer */}
+            </div> {/* .listContainer */}
+          </div> {/* .wrapper */} 
+        </div> {/* .overlay */}
+           
+        <div className="iconsCredit">Icons made by <a href="https://www.flaticon.com/authors/freepik" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" title="Flaticon">www.flaticon.com</a></div>          
       </div>
     );
   }

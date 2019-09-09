@@ -21,11 +21,13 @@ span {
 
 // Main page styles
 .App {
-    // background: rgba(255, 255, 255, 0.5), url(../assets/mainBg1.jpg);
     background-image: url(../assets/mainBg1.jpg);
-    background-size: 50%;
+    background-size: 70%;
     min-height: 100vh;
-    text-align: center;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 h1 {
@@ -69,21 +71,6 @@ h1 {
 .mainContainer {
     display: flex;
     justify-content: space-between;
-
-    .suggestionsContainer {
-        width: 40%;
-
-        .suggestionsUl {
-            display: flex;
-            flex-wrap: wrap;
-            padding-left: 0;
-        }
-
-        li {
-            margin: 10px;
-            width: calc((100% / 3) - 20px);
-        }
-    }
 }
 
 // List box styles
@@ -132,7 +119,27 @@ h1 {
     }
 }
 
+// Suggestions section styles
+.suggestionsContainer {
+    width: 40%;
+
+    .suggestionsUl {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 20px;
+    }
+
+    li {
+        margin: 10px;
+        width: calc((100% / 3) - 20px);
+    }
+}
+
 // Empty list styles
 .hidden {
     display: none;
+}
+
+.iconsCredit {
+    font-size: 1.4rem;
 }
