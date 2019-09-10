@@ -26,7 +26,7 @@ const defaultProducts = [
         img: baconImg,
     },
     {
-        name: 'toast',
+        name: 'bread',
         img: toastImg,
     },
     {
@@ -68,10 +68,10 @@ const Suggestions = ({ selectSuggestion, products }) => {
         <div className="suggestionsBlock">
             <h2>Popular items </h2>
             <ul className="suggestionsUl">
-                {defaultProducts.map((product) => {
+                {defaultProducts.map((product, i) => {
                     const exists = products.includes(product.name)
                     return (
-                        <li>
+                        <li key={i}>
                             <button
                                 className={['suggestionsBtn', exists ? 'greyScale' : 'okay'].join(' ')}
                                 onClick={exists ? null : () => selectSuggestion(product.name)}>

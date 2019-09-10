@@ -8,7 +8,7 @@ const Empty = ({ emptyList, srcCart}) => {
             <div className="emptyListImg">
                 <img 
                     src={srcCart} 
-                    alt="Cat with a shopping cart" 
+                    alt="Empty shopping basket" 
                 />
             </div>
         </div>
