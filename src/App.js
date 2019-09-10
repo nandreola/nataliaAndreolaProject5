@@ -4,7 +4,7 @@ import Form from './Components/Form';
 import Empty from './Components/EmptyList';
 import ProductsList from './Components/ProductsList';
 import './Partials/App.scss';
-import cart from './assets/shoppingCart.jpg';
+import cart from './assets/basket.png';
 import Suggestions from './Components/Suggestions';
 import Footer from './Components/Footer';
 
