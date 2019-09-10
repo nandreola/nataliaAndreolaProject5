@@ -33,7 +33,7 @@ class App extends Component {
       for (let key in productData) {
         newState.push({
           uniqueKey: key, 
-          name: productData[key].name,
+          name: productData[key].name.toLowerCase(),
           isChecked: productData[key].isChecked
         });
       } 
