@@ -1,20 +1,48 @@
+ @media (max-width: 950px) {
+     // Suggestions section
+     .suggestionsContainer li {
+         width: calc((100% / 3) - 20px);
+     }
+
+ }
+
 @media (max-width: 750px) {
+    h1 {
+        text-align: center;
+    }
+    
     .mainContainer {
         flex-direction: column;
 
+        // List styles
         .listBox {
             order: 1;
             width: 80%;
             margin: 20px auto;
         }
 
+        // Suggestions section
         .suggestionsContainer {
             margin: 0 auto;
+            width: 60%;
+
+            li {
+                margin: 5px;
+                width: calc((100% / 4) - 10px);
+            }
         }
     }
 
+    // Input styles
     form {
         text-align: center;
     }
 }
 
+@media (max-width: 500px) {
+    .listContainer .addText,
+    .mainContainer .listBox,
+    .mainContainer .suggestionsContainer {
+        width: 100%;
+    }
+}
