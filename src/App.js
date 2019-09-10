@@ -48,23 +48,29 @@ class App extends Component {
     this.setState({userInput: event.target.value})
   }
 
-  // Event to add product to the list once user presses enter
+  // Add product to the list once user presses enter
   handleKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
+      // Render an alert if user types enter with no item typed
+      const value = this.state.userInput;
+      if (value === '') {
+        alert('Sorry! Please enter an item');
+        return;
+      }
       // create reference to database
       const dbRef = firebase.database().ref();
       // Grab value userInput has and push to the database
       dbRef.push({
         isChecked: false,
-        name: this.state.userInput
+        name: value 
       });
       // reset to an empty string
       this.setState({userInput: ''});
     }
   }
 
-  // Event for product selected from suggested items
+  // Event handler for product selected from suggested items
   selectedProduct = (product) => {
       // create reference to database
       const dbRef = firebase.database().ref();
@@ -75,6 +81,7 @@ class App extends Component {
       });    
   }
 
+  // Toggle clicked checkbox 
   toggleCheckbox(uniqueKey) {
     // credit https://stackoverflow.com/a/46518653
     this.setState({
@@ -90,7 +97,7 @@ class App extends Component {
     });
   }  
 
-  // Event to remove product from the shopping list
+  // Remove product from the shopping list
   removeProduct() {
     const dbRef = firebase.database().ref();
     const notCheckedProducts = this.state.products.filter(product => {
