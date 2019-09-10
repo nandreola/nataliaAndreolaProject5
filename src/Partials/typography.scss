@@ -8,9 +8,13 @@ body {
     color: $light-color;
 }
 
-h1 {
+h1,
+h2 {
     font-family: 'Lobster', cursive;
-    font-size: 6rem;
     color: $primary-color;
+}
+
+h1 {
+    font-size: 5rem;
     text-shadow: -1px 0 yellow, 0 1px yellow, 1px 0 yellow, 0 -1px yellow;   
 }

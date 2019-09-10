@@ -9,8 +9,14 @@ const ProductsList = ({ showHideClearBtn, clickClear, products, changeToggle }) 
             {products.map((product) => {
                 return (
                     <li key={product.uniqueKey}>
-                        <input type="checkbox" defaultChecked={product.isChecked} name="product" className="checkBox" onChange={() => changeToggle(product.uniqueKey)} />
-                        <label htmlFor="product">{product.name}</label>
+                        <input 
+                            type="checkbox" 
+                            defaultChecked={product.isChecked} 
+                            id={product.uniqueKey} 
+                            name={product.uniqueKey} 
+                            className="checkBox" onChange={() => changeToggle(product.uniqueKey)} 
+                        />
+                        <label htmlFor={product.uniqueKey}>{product.name}</label>
                     </li>
                 );
             })}
