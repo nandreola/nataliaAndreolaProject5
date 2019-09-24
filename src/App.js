@@ -54,10 +54,13 @@ class App extends Component {
       event.preventDefault();
       // Render an alert if user types enter with no item typed
       const value = this.state.userInput;
-      if (value === '') {
+      if (value.trim() === '') {
         alert('Sorry! Please enter an item');
         return;
-      }
+      } else if (value.length > 25) {
+        alert('Sorry! Product name is too long');
+        return;
+      } 
       // create reference to database
       const dbRef = firebase.database().ref();
       // Grab value userInput has and push to the database
